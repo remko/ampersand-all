@@ -1,0 +1,45 @@
+[submodule "source/ampersand-dom"]
+	path = source/ampersand-dom
+	url = https://github.com/AmpersandJS/ampersand-dom.git
+[submodule "source/ampersand-events"]
+	path = source/ampersand-events
+	url = https://github.com/AmpersandJS/ampersand-events.git
+[submodule "source/ampersand-state"]
+	path = source/ampersand-state
+	url = https://github.com/AmpersandJS/ampersand-state.git
+[submodule "source/ampersand-collection"]
+	path = source/ampersand-collection
+	url = https://github.com/AmpersandJS/ampersand-collection.git
+[submodule "source/ampersand-class-extend"]
+	path = source/ampersand-class-extend
+	url = https://github.com/AmpersandJS/ampersand-class-extend.git
+[submodule "source/ampersand-collection-rest-mixin"]
+	path = source/ampersand-collection-rest-mixin
+	url = https://github.com/AmpersandJS/ampersand-collection-rest-mixin.git
+[submodule "source/ampersand-sync"]
+	path = source/ampersand-sync
+	url = https://github.com/AmpersandJS/ampersand-sync.git
+[submodule "source/ampersand-rest-collection"]
+	path = source/ampersand-rest-collection
+	url = https://github.com/AmpersandJS/ampersand-rest-collection.git
+[submodule "source/ampersand-collection-lodash-mixin"]
+	path = source/ampersand-collection-lodash-mixin
+	url = https://github.com/AmpersandJS/ampersand-collection-lodash-mixin.git
+[submodule "source/ampersand-view"]
+	path = source/ampersand-view
+	url = https://github.com/AmpersandJS/ampersand-view.git
+[submodule "source/ampersand-dom-bindings"]
+	path = source/ampersand-dom-bindings
+	url = https://github.com/AmpersandJS/ampersand-dom-bindings.git
+[submodule "source/ampersand-collection-view"]
+	path = source/ampersand-collection-view
+	url = https://github.com/AmpersandJS/ampersand-collection-view.git
+[submodule "source/ampersand-model"]
+	path = source/ampersand-model
+	url = https://github.com/AmpersandJS/ampersand-model.git
+[submodule "source/key-tree-store"]
+	path = source/key-tree-store
+	url = https://github.com/HenrikJoreteg/key-tree-store
+[submodule "source/array-next"]
+	path = source/array-next
+	url = https://github.com/HenrikJoreteg/array-next

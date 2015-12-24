@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var _ = require('lodash');
+
+var prefix = _.contains(process.argv[2], "/test") ? ".." : ".";
+
+function getLodashNameFromModule(module) {
+	if (module == "uniqueid") { return "uniqueId"; }
+	if (module == "isempty") { return "isEmpty"; }
+	if (module == "foreach") { return "forEach"; }
+	if (module == "forown") { return "forOwn"; }
+	if (module == "groupby") { return "groupBy"; }
+	if (module == "indexby") { return "indexBy"; }
+	if (module == "indexof") { return "indexOf"; }
+	if (module == "sortby") { return "sortBy"; }
+	if (module == "lastindexof") { return "lastIndexOf"; }
+	if (module == "reduceright") { return "reduceRight"; }
+	if (module == "isstring") { return "isString"; }
+	if (module == "isobject") { return "isObject"; }
+	if (module == "isdate") { return "isDate"; }
+	if (module == "isarray") { return "isArray"; }
+	if (module == "isfunction") { return "isFunction"; }
+	if (module == "countby") { return "countBy"; }
+	if (module == "isequal") { return "isEqual"; }
+	return module;
+}
+
+_.each(fs.readFileSync(process.argv[2]).toString().split('\n'), function (line) {
+	var m;
+	if ((m = line.match(/var (\w+) = require\(['"]lodash\.(.*)['"]\);/))) {
+		var source = getLodashNameFromModule(m[2]);
+		if (source === m[1]) {
+			process.stdout.write("import { " + source + " } from 'lodash';")
+		}
+		else {
+			process.stdout.write("import { " + source + " as " + m[1] + " } from 'lodash';")
+		}
+	}
+	else if ((m = line.match(/var (\w+) = require\('(\.\/)?(key-tree-store|array-next|ampersand-.*)'\);/)) && m[3] !== "ampersand-registry") {
+		process.stdout.write("import " + m[1] + " from '" + prefix + "/" + m[3] + "';")
+	}
+	else if ((m = line.match(/(\w+): require\(['"]lodash\.(.*)['"]\)(.*)/))) {
+		// FIXME
+		var source = getLodashNameFromModule(m[2]);
+		process.stdout.write(m[1] + ": require('lodash')." + source + m[3])
+	}
+	else if ((m = line.match(/module.exports = (.*)/))) {
+		process.stdout.write("export default " + m[1]);
+	}
+	else {
+		process.stdout.write(line);
+	}
+	process.stdout.write('\n');
+});
