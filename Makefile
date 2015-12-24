@@ -39,6 +39,7 @@ TESTS=\
 
 BROWSERIFY=./node_modules/.bin/browserify
 TAPE_RUN=./node_modules/.bin/tape-run
+BABEL=./node_modules/.bin/babel
 
 all: $(CLASSES) $(TESTS) $(ES5CLASSES)
 
@@ -47,7 +48,7 @@ clean:
 
 es5/%.js: %.js
 	mkdir -p es5
-	babel --presets es2015 $< -o $@
+	$(BABEL) $< -o $@
 
 ampersand-class-extend.js: source/ampersand-class-extend/ampersand-class-extend.js
 	./process $< > $@
@@ -155,5 +156,5 @@ test/key-tree-store.js: source/key-tree-store/test/index.js
 
 check:
 	for test in $(TESTS); do \
-		PATH=./node_modules/.bin:$$PATH $(BROWSERIFY) -t [ babelify --presets [ es2015 ] ] $$test | $(TAPE_RUN); \
+		PATH=./node_modules/.bin:$$PATH $(BROWSERIFY) -t babelify $$test | $(TAPE_RUN); \
 	done
